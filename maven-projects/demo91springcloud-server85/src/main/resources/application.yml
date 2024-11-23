@@ -1,0 +1,13 @@
+server:
+  port: 3344
+spring:
+  application:
+    name: cloud-config-center    #注册进eureka服务
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Jionelove/springcloud-config.git    #GitHub仓库名
+          default-label: main
+          timeout: 10000          #          搜索目录
+      label: main          

@@ -1,0 +1,9 @@
+server.port=8901
+spring.application.name=zuul
+# 显式声明路由配置
+# zuul.routes.user.path: /user/**
+# zuul.routes.user.service-id: user-service
+
+eureka.client.service-url.defaultZone=http://eureka1.com:8001/eureka/
+eureka.instance.instance-id=myzuul.com
+eureka.instance.prefer-ip-address: true

@@ -1,0 +1,29 @@
+package com.example.demo;
+
+public class BackParameterBean {
+	String data;
+	String yardage;
+	String clothes;
+	public String getData() {
+		return data;
+	}
+	public void setData(String data) {
+		this.data = data;
+	}
+	public String getYardage() {
+		return yardage;
+	}
+	public void setYardage(String yardage) {
+		this.yardage = yardage;
+	}
+	public String getClothes() {
+		return clothes;
+	}
+	public void setClothes(String clothes) {
+		this.clothes = clothes;
+	}
+	@Override
+	public String toString() {
+		return "BackParameterBean [data=" + data + ", yardage=" + yardage + ", clothes=" + clothes + "]";
+	}
+}

@@ -1,0 +1,33 @@
+package com.example.demo;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+import org.springframework.core.io.buffer.DataBuffer;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class ShoppingBackstage {
+	@PostMapping("/backstage")
+	private String backstage(BackParameterBean backParameterBean) throws IOException {
+		System.err.println(backParameterBean.toString());
+		if(backParameterBean.data.isEmpty()) {
+			return "nothing";
+		}
+		byte[] by=backParameterBean.data.getBytes();
+		String catalogue="/data";
+		File file=new File(catalogue+by);
+		BufferedReader reader=new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+		String line,lines="";
+		while((line=reader.readLine())!=null) {
+			lines+=line;
+		}
+		return lines;
+	}
+}

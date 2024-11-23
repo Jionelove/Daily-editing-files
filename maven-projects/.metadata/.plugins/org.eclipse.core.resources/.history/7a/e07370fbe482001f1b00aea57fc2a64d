@@ -1,0 +1,13 @@
+server:
+  port: 8004
+spring:
+  application:
+    name: crayyge83.com
+eureka:
+  instance:
+    hostname: eureka3.com
+  client:
+    service-url:
+      defaultZone: http://eureka1.com:8004/eureka/
+    fetch-registry: false      
+    register-with-eureka: false

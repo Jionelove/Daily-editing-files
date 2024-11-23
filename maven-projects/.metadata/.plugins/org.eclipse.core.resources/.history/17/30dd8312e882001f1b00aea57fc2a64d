@@ -1,0 +1,13 @@
+server:
+  port: 7004
+spring:
+  application:
+    name: crayyge7001.com
+eureka:
+  client:
+    service-url:
+      defaultZone:  http://eureka1.com:8004/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    instance-id: www.crayysge73.com

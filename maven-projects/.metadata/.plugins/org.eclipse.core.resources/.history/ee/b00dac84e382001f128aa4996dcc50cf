@@ -1,0 +1,18 @@
+server:
+  port: 9999
+spring:
+  application:
+    name: zuultest.com
+zuul:
+  add-host-header:  true
+  routes:
+  servlet-path: /demo/**
+  ignored-services: CRAYYGR7001.COM
+eureka:
+  client:
+    service-url:
+      defaultZone:  http://eureka1.com:8001/eureka/,http://eureka2.com:8002/eureka/,http://eureka3.com:8003/eureka/
+    fetch-registry: true
+  instance:
+    instance-id: zuul9999.com
+    prefer-ip-address: true    

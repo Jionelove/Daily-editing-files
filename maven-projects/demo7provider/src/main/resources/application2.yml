@@ -1,0 +1,13 @@
+spring:
+	profiles:
+		active: test
+---
+spring:
+	profiles: test
+	application:
+	    name: crayyge7001.com
+---
+spring:
+	profiles: demo
+	applicarion:
+		name: crayyge7002.com

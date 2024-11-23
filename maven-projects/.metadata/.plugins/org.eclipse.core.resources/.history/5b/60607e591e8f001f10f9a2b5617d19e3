@@ -1,0 +1,17 @@
+server:
+  port: 8005
+spring:
+  application:
+    name: config-single-server  # 应用名称
+  cloud:
+    config:
+      server:
+        git:
+          timeout: 2000
+          uri: https://github.com/Jionelove/springcloud-config.git
+          search-paths:
+          - springcloud-config
+          skip-ssl-validation: true
+          username: 2831227138@qq.com
+          password: aa897740577
+      label: master

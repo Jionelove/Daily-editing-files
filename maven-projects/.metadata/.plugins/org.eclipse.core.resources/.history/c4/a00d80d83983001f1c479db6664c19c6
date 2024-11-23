@@ -1,0 +1,32 @@
+
+package com.example.demo;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.eureka.serviceregistry.EurekaAutoServiceRegistration;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
+import org.springframework.cloud.netflix.zuul.EnableZuulServer;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.EnableMBeanExport;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.netflix.discovery.EurekaClient;
+@SpringBootApplication
+@EnableZuulServer
+@RestController
+public class DemoApplication8 implements GreetingController {
+
+    public static void main(String[] args) {
+        SpringApplication.run(DemoApplication8.class, args);
+    }
+
+    @Override
+    public String greeting() {
+        return String.format(
+          "Hello from eurekaClient.getApplication(appName).getName()");
+    }
+}

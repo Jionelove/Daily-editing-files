@@ -1,0 +1,9 @@
+server.port=7677
+spring.application.name=zuul7677.com
+eureka.client.service-url.defaultZone= http://eureka1.com:8001/eureka/,http://eureka2.com:8002/eureka/,http://eureka3.com:8003/eureka/
+eureka.client.fetch-registry=true
+eureka.client.register-with-eureka=true
+eureka.instance.instance-id=zuul7677.com
+eureka.instance.prefer-ip-address=true
+zuul.routes.keys.path= /query/**
+zuul.routes.keys.url= http://127.0.0.1:80

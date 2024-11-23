@@ -1,0 +1,10 @@
+server:
+  port: 8005
+spring:
+  application:
+    name: crayyge8005.com
+  cloud:
+    config:
+      server:
+        git:
+          uri: 
