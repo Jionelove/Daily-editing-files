@@ -1,0 +1,42 @@
+package com.example.demo2.controller;
+
+import java.io.IOException;
+import java.util.Map;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class UploadServlet
+ */
+@RestController
+@WebServlet("/UploadServlet")
+@CrossOrigin(origins = "*",allowedHeaders = "*")
+public class UploadServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+    @Override
+    	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    		// TODO Auto-generated method stub
+    		super.doGet(req, resp);
+    		System.err.println("用户发来请求……");
+    	}
+    public void doPost(HttpServletRequest request,
+        HttpServletResponse response) throws ServletException, IOException {
+    	Map<String, String[]> m=request.getParameterMap();
+    	for(String name:m.keySet()) {
+    		if(request.getParameter(name).isEmpty()) {
+    			System.out.println("file is true!"+name);
+    		}else {
+    			System.err.println("不是文件："+name);
+    		}
+    	}
+    }
+}
+

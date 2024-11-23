@@ -1,0 +1,32 @@
+/**
+ * 
+ */
+package com.example.demo2.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+/**
+ * 
+ */
+@WebServlet("/multiple")
+public class TestMultiple extends HttpServlet{
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doPost(req, resp);
+	}
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		PrintWriter print=resp.getWriter();
+		print.write("<h1>welcom spring boot!</h1>");
+		print.flush();
+		print.close();
+	}
+}

@@ -1,0 +1,55 @@
+package com.example.demo2.controller;
+ 
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+@WebServlet(asyncSupported = true, value = "/myServlet")
+public class SaveLevelUpFile extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+ 
+	public SaveLevelUpFile() {
+		super();
+	}
+ 
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		Map<String,String[]> m=request.getParameterMap();
+		for(String name:m.keySet()) {
+			if(request.getParameter(name).isEmpty()){
+				byte[] by=new byte[1024];int length=0;
+				InputStream input=request.getInputStream();
+				ByteArrayOutputStream write=new ByteArrayOutputStream();
+				while((length=input.read(by))!=-1) {
+					write.write(by, 0, length);
+				}
+				write.flush();
+				write.close();
+				input.close();
+			}else {System.err.println(request.getParameter(name).toString());}
+		}
+	}
+ 
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(request, response);
+	}
+	
+}

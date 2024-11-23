@@ -1,0 +1,54 @@
+/**
+ * 
+ */
+package com.example.demo2.controller;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintWriter;
+import java.util.Map;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+/**
+ * 
+ */
+@WebServlet("/multiple")
+@CrossOrigin(origins = "*",allowedHeaders = "*")
+public class TestMultiple extends HttpServlet{
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doPost(req, resp);
+	}
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		PrintWriter print=response.getWriter();
+		print.write("<h1>welcom spring boot!</h1>");
+		print.flush();
+		print.close();
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		Map<String,String[]> m=request.getParameterMap();
+		System.out.println(m.keySet().size());
+		for(String name:m.keySet()) {
+			if(request.getParameter(name).isEmpty()){
+				byte[] by=new byte[1024];int length=0;
+				InputStream input=request.getInputStream();
+				ByteArrayOutputStream write=new ByteArrayOutputStream();
+				while((length=input.read(by))!=-1) {
+					write.write(by, 0, length);
+				}
+				System.err.println(write.toString());
+				write.flush();
+				write.close();
+				input.close();
+			}else {System.err.println(request.getParameter(name).toString());}
+		}}}
